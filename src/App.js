@@ -8,7 +8,16 @@ function App() {
   const [searchResult, setSearchResult] = useState({});
 
   const handleSearch = (searchQuery) => {
-    setSearchResult(searchQuery);
+    try {
+      fetch(`https://restcountries.com/v3.1/name/${searchQuery}`)
+        .then((response) => response.json())
+        .then((data) => {
+          return setSearchResult(data);
+        });
+    } catch (err) {
+      console.log(err.message);
+    }
+    return null;
   };
 
   return (
