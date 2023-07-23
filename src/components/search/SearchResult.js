@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import InfoPanel from "./panel/InfoPanel";
+import ImagePanel from "./panel/ImagePanel";
 import "./SearchResult.css";
 
 function SearchResult(props) {
@@ -15,41 +17,17 @@ function SearchResult(props) {
     }
   }, [props]);
 
-  let infoContent = (
+  let infoContent = Object.keys(data).length ? (
+    <InfoPanel data={data} />
+  ) : (
     <div className="error_countryNotFound">
       Please enter correct name of a country
     </div>
   );
 
-  if (Object.keys(data).length) {
-    if (Object.keys(data).length == 1) {
-      infoContent = (
-        <>
-          <ul>
-            Common Name:&nbsp;&nbsp;&nbsp;
-            <div>{data[0].name.common}</div>
-          </ul>
-          <ul>
-            Official Name:&nbsp;&nbsp;&nbsp;
-            <div>{data[0].name.official}</div>
-          </ul>
-        </>
-      );
-    } else {
-      infoContent = <>Too many countries</>;
-    }
-  }
-
   let imageContent =
-    Object.keys(data).length == 1 && data[0].flags ? (
-      <>
-        <img src={data[0].flags.png} alt={"flag of " + data[0].name.official} />
-        <br />
-        <img
-          src={data[0].coatOfArms.png}
-          alt={"coat of arms of " + data[0].name.official}
-        />
-      </>
+    Object.keys(data).length ? (
+      <ImagePanel data={data}></ImagePanel>
     ) : (
       ""
     );
@@ -61,5 +39,4 @@ function SearchResult(props) {
     </div>
   );
 }
-
 export default SearchResult;

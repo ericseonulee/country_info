@@ -1,0 +1,43 @@
+.infoPanel {
+    font: inherit;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    background-color: white;
+    flex-basis: 0%;
+    flex-grow: 3;
+}
+
+.infoPanel ul {
+    text-align: left;
+    padding-left: 20%;
+}
+
+.infoPanel ul > div {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.infoPanel li {
+    text-align: left;
+    padding: 0 0 20px 75px;
+}
+
+.infoPanel li > div {
+    display: inline-block;
+    font-weight: 500;
+}
+
+.error_multipleResults_title {
+    margin-top: 25px;
+    font-weight: bold;
+    color: #ff0033;
+}
+
+.error_multipleResults {
+    text-align: center;
+    max-width: 50%;
+    margin: auto;
+    font-style: italic;
+    font-weight: 500;
+}
